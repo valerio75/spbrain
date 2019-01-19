@@ -36,6 +36,7 @@ The datasets information are resumed in the following table.
 
 ### Run code manually usign spark-shell
 From command line execute: spark-shell –jars <path-of-jar>/spBRAIN1_0.jar  --driver-memory 4g –master local[*]
+```
 var instances = spark.read.parquet(“BRAINscala/ipdata/ipdata-training-parquet”)
 var negative = instances.filter(“label=0”).select(“features”)
 var positive = instances.filter(“label=1”).select(“features”)
@@ -44,16 +45,20 @@ val test = spark.read.parquet(“BRAINscala/ipdata/ipdata-test-parquet”)
 val model = brain.scala.BrainScalaModel.load(“ipdata”)
 val calssified = model.transform(test)
 classified.show()
+```
 
 ### Run code using Hadoop cluster via spark-submit
 ##### Run application locally on 8 cores
+```
 ./bin/spark-submit \
   --class brain.scala.BrainScalaMRBPTester \
   --master local[8] \
   brain-scala-utils_2.11-1.0.jar \
  ipdata/ipdata-training-parquet     ipdata/models/ipdata-model-A        1       8
+```
 
 ##### Run on a Spark standalone cluster in client deploy mode using 32 cores
+```
 ./bin/spark-submit \
   --class brain.scala.BrainScalaMRBPTester \
   --master spark://207.184.161.138:7077 \
@@ -61,8 +66,10 @@ classified.show()
   --total-executor-cores 64 \
   brain-scala-utils_2.11-1.0.jar \
  ipdata/ipdata-training-parquet       ipdata/models/ipdata-model-B      1      32
-
+```
+  
 #### Run code on a YARN cluster using 64 cores
+```
 ./bin/spark-submit \
 --class brain.scala.BrainScalaMRBPTester \
   --master yarn \
@@ -71,6 +78,7 @@ classified.show()
   --num-executors 64 \
   brain-scala-utils_2.11-1.0.jar \
  ipdata/ipdata-training-parquet    ipdata/models/ipdata-model-C   1      64
+```
 
 ### Run using Jupyter Notebook
 Please refer to file: python-examples/SP-BRAINPythonTester.ipynb
@@ -94,18 +102,20 @@ Datasets can be update to a Bucket cloud storage or local disk, than a Spark job
 * Jar files: <path-to-jar>/brain-scala-utils_2.11-1.0.jar
   
 ----------------------------------------------------------------------------------------------------------------------------------------
+## API user manual
+Please refer to 
 
 ## Author
 You can get in touch with me on my LinkedIn Profile: [![LinkedIn Link]](https://www.linkedin.com/in/valerio-morfino/)
 
 
 ## Issues
-[![GitHub Issues]](https://github.com/valerio75/spbrain/issues)
+[GitHub Issues](https://github.com/valerio75/spbrain/issues)
 
 If you face any issue, you can create a new issue in the Issues Tab and I will be glad to help you out.
 
 ## License
-[![GNU General Public License v3.0](https://img.shields.io/cocoapods/l/AFNetworking.svg?style=style&label=License&maxAge=2592000)](../master/LICENSE)
+[GNU General Public License v3.0](LICENSE)
 
 Copyright (c) 2018-present, Valerio Morfino                                                        
 
