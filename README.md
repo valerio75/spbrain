@@ -103,7 +103,7 @@ Datasets can be update to a Bucket cloud storage or local disk, than a Spark job
   
 ----------------------------------------------------------------------------------------------------------------------------------------
 ## API user manual
-Please refer to 
+Please refer to (USER-MANUAL.md)
 
 ## Author
 You can get in touch with me on my LinkedIn Profile: [![LinkedIn Link](https://img.shields.io/badge/Connect-valerio75-blue.svg?logo=linkedin&longCache=true&style=social&label=Connect)](https://www.linkedin.com/in/valerio-morfino/)
