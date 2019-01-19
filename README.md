@@ -106,16 +106,16 @@ Datasets can be update to a Bucket cloud storage or local disk, than a Spark job
 Please refer to 
 
 ## Author
-You can get in touch with me on my LinkedIn Profile: [https://img.shields.io/badge/Connect-valerio75-blue.svg?logo=linkedin&longCache=true&style=social&label=Connect](https://www.linkedin.com/in/valerio-morfino/)
+You can get in touch with me on my LinkedIn Profile: [![LinkedIn Link](https://img.shields.io/badge/Connect-valerio75-blue.svg?logo=linkedin&longCache=true&style=social&label=Connect)](https://www.linkedin.com/in/valerio-morfino/)
 
 
 ## Issues
-[GitHub Issues(https://img.shields.io/github/issues/valerio75/spbrain.svg?style=flat&label=Issues&maxAge=2592000)](https://github.com/valerio75/spbrain/issues)
-
 If you face any issue, you can create a new issue in the Issues Tab and I will be glad to help you out.
+[![GitHub Issues](https://img.shields.io/github/issues/valerio75/spbrain.svg?style=flat&label=Issues&maxAge=2592000)](https://github.com/valerio75/spbrain/issues)
+
 
 ## License
-[GNU General Public License v3.0 (https://img.shields.io/cocoapods/l/AFNetworking.svg?style=style&label=License&maxAge=2592000)](LICENSE)
+[GNU General Public License v3.0](LICENSE)
 
 Copyright (c) 2018-present, Valerio Morfino                                                        
 
