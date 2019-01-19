@@ -96,17 +96,16 @@ Datasets can be update to a Bucket cloud storage or local disk, than a Spark job
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ## Author
-You can get in touch with me on my LinkedIn Profile: [![LinkedIn Link](https://img.shields.io/badge/Connect-harismuneer-blue.svg?logo=linkedin&longCache=true&style=social&label=Connect
-)](https://www.linkedin.com/in/valerio-morfino/)
+You can get in touch with me on my LinkedIn Profile: [![LinkedIn Link]](https://www.linkedin.com/in/valerio-morfino/)
 
 
 ## Issues
-[![GitHub Issues](https://img.shields.io/github/issues/harismuneer/Handwritten-Digits-Classification-Using-KNN-Multiclass_Perceptron-SVM.svg?style=flat&label=Issues&maxAge=2592000)](https://www.github.com/harismuneer/Handwritten-Digits-Classification-Using-KNN-Multiclass_Perceptron-SVM/issues)
+[![GitHub Issues]](https://github.com/valerio75/spbrain/issues)
 
 If you face any issue, you can create a new issue in the Issues Tab and I will be glad to help you out.
 
 ## License
-[![MIT](https://img.shields.io/cocoapods/l/AFNetworking.svg?style=style&label=License&maxAge=2592000)](../master/LICENSE)
+[![GNU General Public License v3.0](https://img.shields.io/cocoapods/l/AFNetworking.svg?style=style&label=License&maxAge=2592000)](../master/LICENSE)
 
 Copyright (c) 2018-present, Valerio Morfino                                                        
 
