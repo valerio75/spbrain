@@ -7,7 +7,7 @@ To test the performance of the new implementation, the problem of Splicing Site 
 
 In order to provide an effective, efficient and reliable (this aspect is very important in case of very long running executions) implementation, Apache Spark, one of the most interesting and used technologies in the big data field, available with open source license and available in the cloud computing facilities of the main world players, has been selected. The implementation benefits of the whole Hadoop ecosystem’s components, such as HDFS distributed file system, Yarn scheduler, Kafka streaming and many others more. The implementation is exploitable in numerous contexts from stand-alone applications up to streaming contexts, both in local and cloud environments.
 
-## Algotirhms description
+## Algorithms description
 SP-BRAIN consists of three different implementation approaches: Cross-Join, Broadcast Positive and Broadcast Negative and a common framework. All implementation generates the same classification function, with different training times due of different implementation.
 The best performer and more stable implementation (using the provided datasets) is the Broadcast Positive.
 
