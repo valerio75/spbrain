@@ -75,25 +75,52 @@ import scala.util.control.Breaks._
 		var negative = neg.getAs("features").asInstanceOf[org.apache.spark.ml.linalg.SparseVector]
 
 		var posIter = pos.iterator
-		var v = Array.fill[Double] (n*2) (0.0)
+    var v = new Array[Double](2*n)
+
+		val uncertValue = scala.math.pow(0.5, p + q)
+		val uncertValueOne = scala.math.pow(0.5, p + q +1)
 
 		while (posIter.hasNext)
 		{
+      val posV = new Array[Double](n)
+  		var negV = new Array[Double](n)
 		  var positive = posIter.next()
 		  var posIndices = positive.indices
-		  var den:Int =0
+		  var den:Double = 0
 
 		  for (k <- posIndices){
-			  if (positive(k)!=negative(k)) den +=1
-			}
+            if (positive(k) == 1 && negative(k) == 0) {
+                posV(k) = 1.0
+                //negV(k) = 0
+                den += 1.0
+            }else if (positive(k) == 0 && negative(k) == 1) {
+                //posV(k) = 0
+                negV(k) = 1.0
+                den += 1.0
+            }else if ( (positive(k) == 1 && negative(k) == 0.5) || (positive(k) == 0.5 && negative(k) == 0) ){
+                posV(k) = uncertValue
+                //negV(k) = 0
+                den += uncertValue //vvv20190505
+			      }else if (positive(k) == 0.5 && negative(k) == 0.5) {
+                posV(k) = uncertValueOne
+                negV(k) = uncertValueOne
+                den += 2*uncertValueOne //vvv20190505
+        		}else if ( (positive(k) == 0 && negative(k) == 0.5) || (positive(k) == 0.5 && negative(k) == 1) ){
+        				//posV(k) = 0
+        				negV(k) = uncertValue
+        				den += uncertValue //vvv20190505
+        			}/*else{
+                pos(k) = 0
+                neg(k) = 0
+			        }*/
+		  }
+		  if (den==0) den=1  //in order to prevent divide by zero error
+		  val oneOnDen = 1/den
 
-		  var oneOnDen = 1/den.asInstanceOf[Double]
 		  //Compute relevance of k-th element of couple i,j
 		  for (k <- posIndices){
-			if (positive(k)==1.0 && negative(k)==0.0)
-			  v(k) +=  oneOnDen
-			else if (positive(k)==0.0 && negative(k)==1.0)
-			  v(k+n) += oneOnDen
+			  v(k) +=  (posV(k) * oneOnDen)
+			  v(k+n) += (negV(k) * oneOnDen)
 		  }
 		}
 		return v
