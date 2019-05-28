@@ -1,9 +1,14 @@
-
 package brain.scala
 
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.ml.linalg.SparseVector
 import scala.util.control.Breaks._
+import org.apache.spark.sql.Row
+import org.apache.spark.ml.linalg.Vectors
+import org.apache.spark.sql.types.StructField
+import org.apache.spark.sql.types.StructType
+import org.apache.spark.ml.linalg.SQLDataTypes.VectorType
+import org.apache.spark.sql.SparkSession
 
 object BrainUtil {
 //Create an array of Array of Double from a DataFrame containing SparseVector of Double
@@ -21,6 +26,13 @@ def fromDFOfArrayStringToArrayOfArrayDouble(df: DataFrame): Array[Array[Double]]
   while (iter.hasNext)
     arrOfarr:+= iter.next().toSeq.toArray.map(_.asInstanceOf[String].toDouble)
   return arrOfarr
+}
+
+def fromArrayOfArrayDoubleToDFOfSparseVector(arr: Array[Array[Double]], sc: org.apache.spark.SparkContext): DataFrame ={
+  val rdd = sc.parallelize(arr).map(r => Row(Vectors.dense(r).toSparse))
+  val schema = new StructType().add(StructField("features", VectorType, true))
+  val spark = SparkSession.builder.config(sc.getConf).getOrCreate()
+  return spark.createDataFrame(rdd,schema)
 }
 
 //Filter positive Instaces satisfying the term of function
